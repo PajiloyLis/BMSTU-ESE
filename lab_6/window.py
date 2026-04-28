@@ -26,14 +26,14 @@ class Window(QMainWindow):
     
     # Исследовать: RELY, DATA, CPLX
     # Проект: промежуточный
-    # Сделать для разных: SCED (normal, high, high-high)
+    # Сделать для разных: SCED (low-low, low, normal, high, high-high)
     def task(self):
         drivers = DRIVERS_VALUES
         kloc = 430
         mode = PROJECT_MODES["semidetached"]
         results = []
 
-        for SCEDind in range(NORMAL, HIGH_HIGH + 1):
+        for SCEDind in range(LOW_LOW, HIGH_HIGH + 1):
             drivers["SCED"] = DRIVERS_DEFAULT_VALUES["SCED"][SCEDind]
 
             resultOneValue = {
@@ -81,7 +81,7 @@ class Window(QMainWindow):
             plt.figure(figsize=(10, 14))
             plt.suptitle("Исследование влияния атрибутов персонала на "
                             "трудозатраты и время разработки (Сложность: {})"\
-                            .format(LEVEL_NAME[SCEDind + 2]))
+                            .format(LEVEL_NAME[SCEDind]))
             
             plt.subplot(121)
             plt.plot(x, SCEDresult["RELY"]["work"], label='RELY')
